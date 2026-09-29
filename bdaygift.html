@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Dada! 💗</title>
+
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Trebuchet MS", Arial, sans-serif;
+  color: #634653;
+  background: linear-gradient(135deg, #fff0f5, #f4eaff, #fff4e6);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+section {
+  min-height: 100vh;
+  padding: 70px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+h1 {
+  font-size: clamp(2rem, 6vw, 3.7rem);
+  color: #b34e78;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #a65c80;
+  font-size: clamp(1.6rem, 4vw, 2.5rem);
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  max-width: 650px;
+}
+
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 14px 28px;
+  margin: 12px 6px;
+  background: #d979a2;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #c77a9b44;
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: translateY(-3px);
+  background: #bd5c87;
+}
+
+button:disabled {
+  opacity: 0.75;
+  cursor: default;
+  transform: none;
+}
+
+button:focus-visible {
+  outline: 3px solid #80516b;
+  outline-offset: 4px;
+}
+
+.card {
+  width: min(700px, 95%);
+  padding: 30px;
+  margin: 20px auto;
+  border-radius: 28px;
+  background: #ffffffc9;
+  box-shadow: 0 12px 35px #a86f8b20;
+}
+
+.small {
+  font-size: 0.95rem;
+  color: #987583;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* WELCOME */
+
+#welcome {
+  background:
+    radial-gradient(circle at 15% 20%, #ffffffb0 0 3px, transparent 4px),
+    radial-gradient(circle at 80% 30%, #ffffffb0 0 4px, transparent 5px),
+    radial-gradient(circle at 30% 80%, #ffffffb0 0 3px, transparent 4px),
+    linear-gradient(135deg, #ffe4ed, #e9ddff, #fff0dc);
+}
+
+.welcome-decor {
+  font-size: 2rem;
+  margin-bottom: 25px;
+  letter-spacing: 10px;
+}
+
+.subtitle {
+  margin-bottom: 25px;
+}
+
+/* CAKE */
+
+.cake-area {
+  position: relative;
+  width: 320px;
+  height: 300px;
+  margin: 15px auto;
+}
+
+.cake {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  height: 115px;
+  background: linear-gradient(#8b4b37 0 22%, #5c302b 23% 100%);
+  border: 5px solid #6d392f;
+  border-radius: 18px 18px 28px 28px;
+  box-shadow: 0 13px 0 #4b2928;
+}
+
+.cake-top {
+  position: absolute;
+  width: 100%;
+  height: 42px;
+  top: -17px;
+  left: 0;
+  border-radius: 50%;
+  background: #6b382e;
+  border: 5px solid #9d5b49;
+}
+
+.icing {
+  position: absolute;
+  top: 5px;
+  left: 0;
+  width: 100%;
+  height: 24px;
+  border-radius: 50%;
+  background: #f5c4d5;
+  border-bottom: 5px solid #e9a5bf;
+}
+
+.strawberry {
+  position: absolute;
+  top: -10px;
+  width: 22px;
+  height: 27px;
+  background: #e84d63;
+  border-radius: 55% 55% 60% 60%;
+  transform: rotate(25deg);
+  z-index: 2;
+}
+
+.strawberry::after {
+  content: "✦";
+  position: absolute;
+  top: -10px;
+  left: 5px;
+  color: #5e9b58;
+  font-size: 13px;
+}
+
+.berry1 { left: 50px; }
+.berry2 { left: 115px; top: -17px; }
+.berry3 { left: 180px; }
+
+.candle {
+  position: absolute;
+  bottom: 120px;
+  width: 13px;
+  height: 55px;
+  border-radius: 4px;
+  background: repeating-linear-gradient(
+    45deg,
+    #fff8e8,
+    #fff8e8 7px,
+    #f1a4bd 7px,
+    #f1a4bd 13px
+  );
+  z-index: 5;
+  transition: opacity 0.4s;
+}
+
+.candle1 { left: 92px; }
+.candle2 { left: 126px; }
+.candle3 { left: 160px; }
+.candle4 { left: 194px; }
+
+.flame {
+  position: absolute;
+  width: 15px;
+  height: 23px;
+  top: -24px;
+  left: -1px;
+  border-radius: 50%;
+  background: #ffb52e;
+  box-shadow: 0 0 12px #ffb52e, 0 0 25px #ffdf83;
+  animation: flicker 0.5s infinite alternate;
+}
+
+.flame::after {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 11px;
+  left: 4px;
+  top: 6px;
+  background: #fff6b0;
+  border-radius: 50%;
+}
+
+/* Flame disappears after countdown */
+
+.candle.blown-out .flame {
+  opacity: 0;
+  animation: none;
+}
+
+.candle.blown-out {
+  opacity: 0.8;
+}
+
+@keyframes flicker {
+  from { transform: scale(1) rotate(-3deg); }
+  to { transform: scale(1.12) rotate(3deg); }
+}
+
+/* GREYISH CANDLE SMOKE */
+
+.smoke {
+  position: absolute;
+  bottom: 180px;
+  width: 13px;
+  height: 13px;
+  background: #b6aeb8;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 8;
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+.smoke1 { left: 92px; }
+.smoke2 { left: 126px; }
+.smoke3 { left: 160px; }
+.smoke4 { left: 194px; }
+
+.smoke.show-smoke {
+  animation: smokeRise 1.8s ease-out forwards;
+}
+
+@keyframes smokeRise {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.5);
+    box-shadow: 0 0 0 0 #b6aeb866;
+  }
+
+  25% {
+    opacity: 0.7;
+    transform: translateY(-10px) translateX(3px) scale(1);
+  }
+
+  60% {
+    opacity: 0.45;
+    transform: translateY(-35px) translateX(-5px) scale(1.5);
+    box-shadow: 8px -12px 0 -2px #b6aeb866;
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateY(-65px) translateX(5px) scale(2);
+    box-shadow: -8px -20px 0 -2px #b6aeb855;
+  }
+}
+
+#countdown {
+  min-height: 50px;
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #b34e78;
+}
+
+#birthdayMessage {
+  color: #b34e78;
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+  font-weight: bold;
+  animation: pop 0.6s ease-out;
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.2);
+    opacity: 0;
+  }
+
+  70% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* BOUQUET AND NOTE */
+
+.bouquet {
+  font-size: 4rem;
+  margin: 15px 0;
+  animation: sway 3s ease-in-out infinite;
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50% { transform: rotate(4deg); }
+}
+
+.note {
+  background: #fff6d9;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px #9e7b4b20;
+  transform: rotate(-1deg);
+  max-width: 520px;
+  margin: 20px auto;
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 1.15rem;
+  line-height: 1.8;
+}
+
+/* ENVELOPE AND LETTER */
+
+.envelope {
+  font-size: 6rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin: 10px;
+}
+
+.envelope:hover {
+  transform: scale(1.1) rotate(-3deg);
+}
+
+.letter {
+  background: #fffaf0;
+  border: 2px dashed #d7a8b9;
+  border-radius: 15px;
+  padding: 30px;
+  margin-top: 20px;
+  text-align: left;
+  white-space: pre-line;
+  line-height: 1.9;
+  animation: pop 0.5s ease-out;
+}
+
+/* PHOTO GALLERY */
+
+.photo-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 25px;
+}
+
+.photo-frame {
+  padding: 10px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px #9e7b4b25;
+  overflow: hidden;
+  transition: transform 0.25s;
+}
+
+.photo-frame:hover {
+  transform: translateY(-5px) rotate(-1deg);
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 9px;
+}
+
+.photo-caption {
+  padding: 12px 5px 5px;
+  color: #a65c80;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* SPARKLES */
+
+.sparkle {
+  position: fixed;
+  pointer-events: none;
+  z-index: 100;
+  animation: sparkle 1.5s ease-out forwards;
+}
+
+@keyframes sparkle {
+  0% {
+    transform: translateY(0) scale(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-120px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+footer {
+  padding: 25px;
+  color: #a77c8f;
+  font-size: 0.9rem;
+}
+
+/* MOBILE */
+
+@media (max-width: 520px) {
+  .cake-area {
+    transform: scale(0.88);
+    margin: -5px auto;
+  }
+
+  .card {
+    padding: 22px 16px;
+  }
+
+  section {
+    padding: 50px 14px;
+  }
+
+  .photo-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-frame img {
+    height: auto;
+    max-height: 420px;
+    object-fit: contain;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- WELCOME SECTION -->
+
+<section id="welcome">
+  <div class="welcome-decor">🎀 ✨ 🌷 ✨ 🎀</div>
+
+  <h1>Happiest Birthday Dada!!!</h1>
+
+  <p class="subtitle">
+    A little world, a little cake, a lot of love —
+    made just for you. 💗
+  </p>
+
+  <p>Ready for your little birthday surprise?</p>
+
+  <button onclick="goTo('cakeSection')">
+    YESSS! 💗
+  </button>
+</section>
+
+
+<!-- BIRTHDAY CAKE SECTION -->
+
+<section id="cakeSection">
+  <h2>A cake, just for you 🎂</h2>
+
+  <p>Close your eyes, make a wish, and get ready!</p>
+
+  <div class="card">
+
+    <div class="cake-area">
+
+      <div class="candle candle1">
+        <div class="flame"></div>
+      </div>
+
+      <div class="candle candle2">
+        <div class="flame"></div>
+      </div>
+
+      <div class="candle candle3">
+        <div class="flame"></div>
+      </div>
+
+      <div class="candle candle4">
+        <div class="flame"></div>
+      </div>
+
+      <div class="smoke smoke1"></div>
+      <div class="smoke smoke2"></div>
+      <div class="smoke smoke3"></div>
+      <div class="smoke smoke4"></div>
+
+      <div class="cake">
+        <div class="cake-top">
+          <div class="icing"></div>
+          <div class="strawberry berry1"></div>
+          <div class="strawberry berry2"></div>
+          <div class="strawberry berry3"></div>
+        </div>
+      </div>
+
+    </div>
+
+    <div id="countdown">🕯️ 🕯️ 🕯️ 🕯️</div>
+
+    <div id="birthdayMessage" class="hidden">
+      Happiest birthday dada!!! 💗
+    </div>
+
+    <button id="wishButton" onclick="startCandleCountdown()">
+      Make a Wish ✨
+    </button>
+
+    <p class="small">
+      Your wish is between you and the stars. 🌟
+    </p>
+
+  </div>
+
+  <button onclick="goTo('giftSection')">
+    Continue 💌
+  </button>
+</section>
+
+
+<!-- FLOWERS AND PERSONAL NOTE -->
+
+<section id="giftSection">
+  <h2>A little something for you 🌷</h2>
+
+  <div class="card">
+
+    <div class="bouquet">💐</div>
+
+    <p>Some flowers for my favourite person.</p>
+
+    <div class="note">
+      To the person who had made the world less scary for me.
+      Happiest birthday dada, I love you! 💗
+    </div>
+
+  </div>
+
+  <button onclick="goTo('letterSection')">
+    Open your letter 💌
+  </button>
+</section>
+
+
+<!-- LETTER SECTION -->
+
+<section id="letterSection">
+  <h2>A letter from me to you 💌</h2>
+
+  <div class="card">
+
+    <div
+      class="envelope"
+      onclick="openLetter()"
+      role="button"
+      tabindex="0"
+      onkeydown="if(event.key === 'Enter' || event.key === ' ') openLetter()"
+      aria-label="Open your letter"
+    >
+      💌
+    </div>
+
+    <p class="small">Tap the envelope to open it.</p>
+
+    <div id="letter" class="letter hidden">Dada,
+
+Happiest birthday to my favourite person! 💗
+
+I don't think I say this enough, but I'm so, so grateful
+to have you in my life.
+
+The world feels a little less scary because I have you
+beside me. You have always been like a strong wall —
+someone I know I can lean on, someone who makes
+everything feel a little easier.
+
+Thank you for supporting me, for being there for me,
+and for being my Dada.
+
+I hope this year brings you all the happiness, peace,
+success, and love that you deserve.
+
+No matter how old we get, you'll always be my Dada
+and I'll always be your little sister.
+
+I love you more than words can explain.
+
+Happiest birthday, Dada!!! 🎂💗
+
+With all my love,
+Siddhi</div>
+
+    <button
+      id="foldButton"
+      class="hidden"
+      onclick="closeLetter()"
+    >
+      Fold the letter 💗
+    </button>
+
+  </div>
+
+  <button onclick="goTo('photosSection')">
+    Next: our memories 📸
+  </button>
+</section>
+
+
+<!-- PHOTO MEMORIES SECTION -->
+
+<section id="photosSection">
+  <h2>Our Little Collection of Memories 📸</h2>
+
+  <div class="card">
+
+    <p>
+      Some of my favourite memories are the ones
+      where I get to be with you. 💗
+    </p>
+
+    <div class="photo-grid">
+
+      <!-- FIRST PHOTO -->
+      <div class="photo-frame">
+        <img
+          src="photo1.jpg"
+          alt="A special memory with Dada"
+        >
+
+        <div class="photo-caption">
+          My forever favourite person 💗
+        </div>
+      </div>
+
+      <!-- SECOND PHOTO -->
+      <div class="photo-frame">
+        <img
+          src="dada.jpg"
+          alt="A beautiful memory with Dada"
+        >
+
+        <div class="photo-caption">
+          My Dada, always and forever 🌷
+        </div>
+      </div>
+
+    </div>
+
+    <p class="small" style="margin-top: 22px;">
+      Two little moments, a lifetime of love. ✨
+    </p>
+
+  </div>
+
+  <button onclick="goTo('endingSection')">
+    One last thing… 💗
+  </button>
+</section>
+
+
+<!-- FINAL MESSAGE -->
+
+<section id="endingSection">
+
+  <div class="welcome-decor">🌷 💗 ✨ 💗 🌷</div>
+
+  <h1>To my Dada,</h1>
+
+  <div class="card">
+
+    <p>
+      Thank you for being my safe place,
+      my biggest support, and one of the
+      most important people in my world.
+    </p>
+
+    <br>
+
+    <p>
+      The world is less scary because I have you beside me.
+      And wherever life takes us, you'll always have me too.
+    </p>
+
+    <br>
+
+    <h2>Happiest Birthday, Dada!!! 🎂</h2>
+
+    <p>I love you so much. 💗</p>
+
+    <p class="small" style="margin-top: 20px;">
+      — Your little sister, Siddhi
+    </p>
+
+  </div>
+
+  <button onclick="goTo('welcome')">
+    Replay from the beginning ✨
+  </button>
+
+</section>
+
+
+<footer>
+  Made with all my love, just for you. 💗
+</footer>
+
+
+<script>
+let countdownRunning = false;
+
+function goTo(sectionId) {
+  document.getElementById(sectionId).scrollIntoView({
+    behavior: "smooth"
+  });
+}
+
+
+/* CANDLE COUNTDOWN */
+
+function startCandleCountdown() {
+  if (countdownRunning) return;
+
+  countdownRunning = true;
+
+  const countdown = document.getElementById("countdown");
+  const candles = document.querySelectorAll(".candle");
+  const smoke = document.querySelectorAll(".smoke");
+  const birthdayMessage = document.getElementById("birthdayMessage");
+  const wishButton = document.getElementById("wishButton");
+
+  let count = 3;
+
+  // Reset the candles and smoke
+  candles.forEach(candle => {
+    candle.classList.remove("blown-out");
+  });
+
+  smoke.forEach(wisp => {
+    wisp.classList.remove("show-smoke");
+    wisp.style.animationDelay = "0s";
+  });
+
+  birthdayMessage.classList.add("hidden");
+
+  wishButton.disabled = true;
+  wishButton.textContent = "Make a wish… ✨";
+
+  countdown.textContent = count;
+
+  const timer = setInterval(() => {
+    count--;
+
+    if (count > 0) {
+      countdown.textContent = count;
+    } else {
+      clearInterval(timer);
+
+      // FIRST: extinguish the candle flames
+      candles.forEach(candle => {
+        candle.classList.add("blown-out");
+      });
+
+      // THEN: show the grey smoke
+      smoke.forEach((wisp, index) => {
+        wisp.style.animationDelay = (index * 0.12) + "s";
+        wisp.classList.add("show-smoke");
+      });
+
+      // Show the birthday message and sparkles
+      countdown.textContent = "✨";
+
+      birthdayMessage.classList.remove("hidden");
+
+      wishButton.textContent = "Wish made! 💗";
+
+      makeSparkles();
+
+      countdownRunning = false;
+    }
+  }, 1000);
+}
+
+
+/* OPEN AND FOLD LETTER */
+
+function openLetter() {
+  document.getElementById("letter").classList.remove("hidden");
+  document.getElementById("foldButton").classList.remove("hidden");
+}
+
+function closeLetter() {
+  document.getElementById("letter").classList.add("hidden");
+  document.getElementById("foldButton").classList.add("hidden");
+}
+
+
+/* SPARKLE CELEBRATION */
+
+function makeSparkles() {
+  const symbols = ["✨", "💗", "⭐", "🌸", "💕"];
+
+  for (let i = 0; i < 45; i++) {
+    const sparkle = document.createElement("span");
+
+    sparkle.className = "sparkle";
+
+    sparkle.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    sparkle.style.left = Math.random() * 100 + "vw";
+    sparkle.style.top = (35 + Math.random() * 55) + "vh";
+    sparkle.style.fontSize = (14 + Math.random() * 22) + "px";
+    sparkle.style.animationDelay = Math.random() * 0.8 + "s";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(() => {
+      sparkle.remove();
+    }, 2500);
+  }
+}
+</script>
+
+</body>
+</html>
